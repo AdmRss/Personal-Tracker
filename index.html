@@ -3,82 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ngetes WEB</title>
-  <link rel="stylesheet" href="stylenya.css" /> 
+  <title>iOS Mockup - Bulking Tracker</title>
+  <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   <style>
-    /* Tambahan Gaya untuk Login Page tanpa mengubah variabel yang ada */
-    .login-screen {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      padding: 30px;
-      text-align: center;
-    }
-    .login-card {
-      background: var(--card);
-      padding: 32px 24px;
-      border-radius: var(--radius-card);
-      width: 100%;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    }
-    .login-icon {
-      font-size: 48px;
-      margin-bottom: 20px;
-    }
-    .login-title {
-      font-size: 24px;
-      font-weight: 740;
-      color: var(--label);
-      margin-bottom: 8px;
-      letter-spacing: -0.5px;
-    }
-    .login-subtitle {
-      font-size: 14px;
-      color: var(--label3);
-      margin-bottom: 30px;
-      line-height: 1.4;
-    }
-    .login-input {
-      width: 100%;
-      padding: 16px;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--separator);
-      background: var(--bg);
-      color: var(--label);
-      font-family: var(--font);
-      font-size: 16px;
-      margin-bottom: 20px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .login-input:focus {
-      border-color: var(--blue);
-    }
-    .login-submit-btn {
-      width: 100%;
-      padding: 16px;
-      background: var(--blue);
-      color: #fff;
-      border: none;
-      border-radius: var(--radius-sm);
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
-    .login-submit-btn:active {
-      opacity: 0.8;
-    }
-    
-    /* Sembunyikan navigasi saat login */
-    .tab-bar.hidden, .home-indicator.hidden {
-      display: none;
-    }
+    .login-screen { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; padding: 30px; text-align: center; }
+    .login-card { background: var(--card); padding: 32px 24px; border-radius: var(--radius-card); width: 100%; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+    .login-icon { font-size: 48px; margin-bottom: 20px; }
+    .login-title { font-size: 24px; font-weight: 740; color: var(--label); margin-bottom: 8px; letter-spacing: -0.5px; }
+    .login-subtitle { font-size: 14px; color: var(--label3); margin-bottom: 30px; line-height: 1.4; }
+    .login-input { width: 100%; padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--separator); background: var(--bg); color: var(--label); font-family: var(--font); font-size: 16px; margin-bottom: 20px; outline: none; transition: border-color 0.2s; }
+    .login-input:focus { border-color: var(--blue); }
+    .login-submit-btn { width: 100%; padding: 16px; background: var(--blue); color: #fff; border: none; border-radius: var(--radius-sm); font-size: 16px; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+    .login-submit-btn:active { opacity: 0.8; }
+    .tab-bar.hidden, .home-indicator.hidden { display: none; }
   </style>
 </head>
 <body>
@@ -90,7 +30,7 @@
       </div>
 
       <div class="status-bar">
-        <span class="time" id="liveTime">9:41</span>
+        <span class="time" id="liveTimeStatus">00:00</span>
         <div class="status-icons">
           <svg width="17" height="12" viewBox="0 0 17 12" fill="currentColor">
             <rect x="0" y="3" width="3" height="9" rx="1" opacity="0.3"/>
@@ -119,7 +59,7 @@
             <div class="login-card">
               <div class="login-icon">💪</div>
               <h2 class="login-title">Selamat Datang</h2>
-              <p class="login-subtitle">Masukkin Nama</p>
+              <p class="login-subtitle">Masukkan Nama Lo</p>
               <input type="text" id="userNameInput" class="login-input" placeholder="(Contoh: Adam Ganteng)" />
               <button class="login-submit-btn" onclick="handleLogin()">Mulai Sekarang</button>
             </div>
@@ -129,7 +69,7 @@
         <div class="page" id="page-home">
           <div class="home-header">
             <div class="greeting-block">
-              <p class="greeting-sub" id="currentDateDisplay">Rabu, 15 April</p>
+              <p class="greeting-sub" id="currentDateDisplay">Memuat tanggal...</p>
               <h1 class="greeting-title">Hai, <span class="user-display-name">User</span> 👋</h1>
             </div>
             <button class="avatar-btn" aria-label="Profile">
@@ -139,8 +79,8 @@
 
           <div class="summary-card">
             <div class="summary-top">
-              <span class="summary-label">Program Bulking</span>
-              <span class="summary-badge">Let's Go GNG 🔥</span>
+              <span class="summary-label">Program Bulking Data Adam</span>
+              <span class="summary-badge">Letsgo🔥</span>
             </div>
             <div class="summary-stats">
               <div class="stat-item">
@@ -163,47 +103,17 @@
             </div>
           </div>
 
-          <div class="section-title">Jadwal Hari Ini</div>
-          <div class="schedule-list">
-            <div class="schedule-item done">
-              <div class="sched-icon">🍚</div>
-              <div class="sched-info">
-                <span class="sched-name">Sarapan Warteg</span>
-                <span class="sched-time">07:00</span>
-              </div>
-              <div class="sched-check">✓</div>
-            </div>
-            <div class="schedule-item done">
-              <div class="sched-icon">📚</div>
-              <div class="sched-info">
-                <span class="sched-name">Kuliah PBO</span>
-                <span class="sched-time">09:40 – 12:10</span>
-              </div>
-              <div class="sched-check">✓</div>
-            </div>
-            <div class="schedule-item active-now">
-              <div class="sched-icon">🥤</div>
-              <div class="sched-info">
-                <span class="sched-name">Evomass #1</span>
-                <span class="sched-time">12:15 · Sekarang</span>
-              </div>
-              <div class="sched-dot-live"></div>
-            </div>
-            <div class="schedule-item">
-              <div class="sched-icon">📚</div>
-              <div class="sched-info">
-                <span class="sched-name">Kuliah Grafik</span>
-                <span class="sched-time">13:00 – 15:30</span>
-              </div>
-            </div>
-            <div class="schedule-item gym">
-              <div class="sched-icon">🏋️</div>
-              <div class="sched-info">
-                <span class="sched-name">GYM – Push Day</span>
-                <span class="sched-time">19:00 – 20:00</span>
-              </div>
-              <span class="gym-tag">Push</span>
-            </div>
+          <div class="section-title" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <span>Jadwal Hari Ini</span>
+            <span id="liveClockDisplay" style="color: var(--blue); font-weight: 700; font-variant-numeric: tabular-nums;">--:--:--</span>
+          </div>
+          <div class="schedule-list" id="liveSchedule">
+             </div>
+
+          <div class="section-title" style="margin-top:20px">Tips Hari Ini</div>
+          <div class="tip-card">
+            <span class="tip-emoji">💡</span>
+            <p class="tip-text">Tidur minimal 7–8 jam setiap malam. Itu bagian terpenting dari proses bulking untuk recovery otot!</p>
           </div>
         </div>
 
@@ -212,28 +122,116 @@
             <h2>Nutrisi</h2>
             <span class="page-date">Hari ini</span>
           </div>
+
           <div class="calorie-ring-card">
             <div class="ring-wrapper">
               <svg viewBox="0 0 120 120" class="ring-svg">
                 <circle cx="60" cy="60" r="50" class="ring-bg"/>
-                <circle cx="60" cy="60" r="50" class="ring-fill" stroke-dasharray="314" stroke-dashoffset="94"/>
+                <circle cx="60" cy="60" r="50" class="ring-fill" id="ringProgress"
+                  stroke-dasharray="314"
+                  stroke-dashoffset="94"/>
               </svg>
               <div class="ring-center">
-                <span class="ring-num">2100</span>
+                <span class="ring-num" id="calorieNum">2100</span>
                 <span class="ring-label">kcal</span>
+                <span class="ring-sub">dari 2700</span>
               </div>
             </div>
             <div class="macro-row">
               <div class="macro-item">
-                <div class="macro-bar-wrap"><div class="macro-bar protein" style="height:70%"></div></div>
+                <div class="macro-bar-wrap">
+                  <div class="macro-bar protein" style="height:70%"></div>
+                </div>
                 <span class="macro-val">135g</span>
                 <span class="macro-lbl">Protein</span>
               </div>
               <div class="macro-item">
-                <div class="macro-bar-wrap"><div class="macro-bar carbs" style="height:55%"></div></div>
+                <div class="macro-bar-wrap">
+                  <div class="macro-bar carbs" style="height:55%"></div>
+                </div>
                 <span class="macro-val">280g</span>
                 <span class="macro-lbl">Karbo</span>
               </div>
+              <div class="macro-item">
+                <div class="macro-bar-wrap">
+                  <div class="macro-bar fat" style="height:40%"></div>
+                </div>
+                <span class="macro-val">42g</span>
+                <span class="macro-lbl">Lemak</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-title">Log Makan</div>
+          <div class="meal-log">
+            <div class="meal-entry">
+              <div class="meal-left">
+                <span class="meal-emoji">🍚</span>
+                <div>
+                  <p class="meal-name">Sarapan Warteg</p>
+                  <p class="meal-desc">Nasi + Ayam + Telur</p>
+                </div>
+              </div>
+              <span class="meal-cal">600 kcal</span>
+            </div>
+            <div class="meal-entry">
+              <div class="meal-left">
+                <span class="meal-emoji">🥤</span>
+                <div>
+                  <p class="meal-name">Evomass #1</p>
+                  <p class="meal-desc">2 Scoop Vanilla</p>
+                </div>
+              </div>
+              <span class="meal-cal">300 kcal</span>
+            </div>
+            <div class="meal-entry">
+              <div class="meal-left">
+                <span class="meal-emoji">🍚</span>
+                <div>
+                  <p class="meal-name">Makan Siang Warteg</p>
+                  <p class="meal-desc">Nasi + Lauk Pilihan</p>
+                </div>
+              </div>
+              <span class="meal-cal">650 kcal</span>
+            </div>
+            <div class="meal-entry">
+              <div class="meal-left">
+                <span class="meal-emoji">🥤</span>
+                <div>
+                  <p class="meal-name">Evomass #2</p>
+                  <p class="meal-desc">2 Scoop Vanilla</p>
+                </div>
+              </div>
+              <span class="meal-cal">300 kcal</span>
+            </div>
+            <div class="meal-entry pending">
+              <div class="meal-left">
+                <span class="meal-emoji">🍚</span>
+                <div>
+                  <p class="meal-name">Makan Malam</p>
+                  <p class="meal-desc">Belum dicatat</p>
+                </div>
+              </div>
+              <span class="meal-cal pending-text">— kcal</span>
+            </div>
+          </div>
+
+          <div class="section-title" style="margin-top:20px">Evomass Tracker</div>
+          <div class="evo-tracker">
+            <div class="evo-label-row">
+              <span>Progress Scoop Hari Ini</span>
+              <span id="scoopCount">4 / 6</span>
+            </div>
+            <div class="evo-bar-bg">
+              <div class="evo-bar-fill" style="width:66.6%"></div>
+            </div>
+            <div class="evo-dots">
+              <div class="evo-dot filled"></div>
+              <div class="evo-dot filled"></div>
+              <div class="evo-dot filled"></div>
+              <div class="evo-dot filled"></div>
+              <div class="evo-dot"></div>
+              <div class="evo-dot"></div>
             </div>
           </div>
         </div>
@@ -243,9 +241,80 @@
             <h2>Program Gym</h2>
             <span class="page-date">PPL-R-UL</span>
           </div>
+
+          <div class="week-strip">
+            <div class="day-pill active">Sen<br/><small>Push</small></div>
+            <div class="day-pill">Sel<br/><small>Pull</small></div>
+            <div class="day-pill">Rab<br/><small>Legs</small></div>
+            <div class="day-pill rest">Kam<br/><small>Rest</small></div>
+            <div class="day-pill">Jum<br/><small>Upper</small></div>
+            <div class="day-pill">Sab<br/><small>Lower</small></div>
+            <div class="day-pill rest">Min<br/><small>Rest</small></div>
+          </div>
+
+          <div class="section-title">Latihan Hari Ini – PUSH</div>
+          <div class="exercise-list">
+            <div class="exercise-card" onclick="toggleExercise(this)">
+              <div class="ex-left">
+                <div class="ex-icon">🏋️</div>
+                <div>
+                  <p class="ex-name">Bench Press</p>
+                  <p class="ex-detail">4 set × 8-10 reps · 60kg</p>
+                </div>
+              </div>
+              <div class="ex-check" aria-label="selesai"></div>
+            </div>
+            <div class="exercise-card done" onclick="toggleExercise(this)">
+              <div class="ex-left">
+                <div class="ex-icon">💪</div>
+                <div>
+                  <p class="ex-name">Overhead Press</p>
+                  <p class="ex-detail">4 set × 8-10 reps · 40kg</p>
+                </div>
+              </div>
+              <div class="ex-check checked" aria-label="selesai">✓</div>
+            </div>
+            <div class="exercise-card" onclick="toggleExercise(this)">
+              <div class="ex-left">
+                <div class="ex-icon">🔄</div>
+                <div>
+                  <p class="ex-name">Incline Dumbbell</p>
+                  <p class="ex-detail">3 set × 10-12 reps · 24kg</p>
+                </div>
+              </div>
+              <div class="ex-check" aria-label="selesai"></div>
+            </div>
+            <div class="exercise-card" onclick="toggleExercise(this)">
+              <div class="ex-left">
+                <div class="ex-icon">📐</div>
+                <div>
+                  <p class="ex-name">Tricep Pushdown</p>
+                  <p class="ex-detail">3 set × 12-15 reps · Cable</p>
+                </div>
+              </div>
+              <div class="ex-check" aria-label="selesai"></div>
+            </div>
+            <div class="exercise-card" onclick="toggleExercise(this)">
+              <div class="ex-left">
+                <div class="ex-icon">🤸</div>
+                <div>
+                  <p class="ex-name">Lateral Raise</p>
+                  <p class="ex-detail">3 set × 12-15 reps · 10kg</p>
+                </div>
+              </div>
+              <div class="ex-check" aria-label="selesai"></div>
+            </div>
+          </div>
+
+          <div class="section-title" style="margin-top:20px">Rest Timer</div>
           <div class="timer-card">
             <div class="timer-display" id="timerDisplay">01:30</div>
-            <button class="start-timer-btn" onclick="toggleTimer()">Mulai</button>
+            <div class="timer-controls">
+              <button class="timer-btn" onclick="setTimer(60)">60s</button>
+              <button class="timer-btn active-timer" onclick="setTimer(90)">90s</button>
+              <button class="timer-btn" onclick="setTimer(120)">120s</button>
+            </div>
+            <button class="start-timer-btn" id="startTimerBtn" onclick="toggleTimer()">Mulai</button>
           </div>
         </div>
 
@@ -255,29 +324,88 @@
             <h2 class="profile-name user-display-name">User</h2>
             <p class="profile-tag">Ectomorph · Hardgainer 🔥</p>
           </div>
+
           <div class="stats-grid">
-            <div class="stat-box"><span class="sb-val">167 (kayaknya)</span><span class="sb-lbl">Tinggi (cm)</span></div>
-            <div class="stat-box"><span class="sb-val">56.5</span><span class="sb-lbl">Berat (kg)</span></div>
+            <div class="stat-box">
+              <span class="sb-val">167</span>
+              <span class="sb-unit">cm</span>
+              <span class="sb-lbl">Tinggi</span>
+            </div>
+            <div class="stat-box">
+              <span class="sb-val">56.5</span>
+              <span class="sb-unit">kg</span>
+              <span class="sb-lbl">Berat</span>
+            </div>
+            <div class="stat-box">
+              <span class="sb-val">20.3</span>
+              <span class="sb-unit">BMI</span>
+              <span class="sb-lbl">Indeks</span>
+            </div>
+            <div class="stat-box">
+              <span class="sb-val">5</span>
+              <span class="sb-unit">hari</span>
+              <span class="sb-lbl">Gym/minggu</span>
+            </div>
+          </div>
+
+          <div class="section-title">Suplemen</div>
+          <div class="supp-card">
+            <div class="supp-icon">💪</div>
+            <div class="supp-info">
+              <p class="supp-name">Evomass 900g – Vanilla</p>
+              <p class="supp-desc">6 scoop/hari · Whey + Complex Carbs</p>
+            </div>
+            <span class="supp-badge">Aktif</span>
+          </div>
+
+          <div class="section-title" style="margin-top:16px">Target Bulking</div>
+          <div class="target-card">
+            <div class="target-row">
+              <span class="target-lbl">Kalori Harian</span>
+              <span class="target-val">2.700 kcal</span>
+            </div>
+            <div class="target-row">
+              <span class="target-lbl">Protein Harian</span>
+              <span class="target-val">140 – 160g</span>
+            </div>
+            <div class="target-row">
+              <span class="target-lbl">Program Latihan</span>
+              <span class="target-val">PPL-R-UL</span>
+            </div>
+            <div class="target-row">
+              <span class="target-lbl">Jam Gym</span>
+              <span class="target-val">19:00 – 20:00</span>
+            </div>
           </div>
         </div>
-
       </div>
 
       <div class="tab-bar hidden" id="mainTabBar">
         <button class="tab-btn active" data-page="page-home" onclick="switchPage('page-home', this)">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/>
+            <path d="M9 21V12h6v9"/>
+          </svg>
           <span>Beranda</span>
         </button>
         <button class="tab-btn" data-page="page-nutrition" onclick="switchPage('page-nutrition', this)">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/>
+            <line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+          </svg>
           <span>Nutrisi</span>
         </button>
         <button class="tab-btn" data-page="page-gym" onclick="switchPage('page-gym', this)">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5h11M6.5 17.5h11M3 10h18M3 14h18"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6.5 6.5h11M6.5 17.5h11M3 10h18M3 14h18"/>
+          </svg>
           <span>Gym</span>
         </button>
         <button class="tab-btn" data-page="page-profile" onclick="switchPage('page-profile', this)">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
           <span>Profil</span>
         </button>
       </div>
@@ -287,52 +415,232 @@
   </div>
 
   <script>
-    // Live time logic
-    function updateTime() {
-      const now = new Date();
-      document.getElementById('liveTime').textContent = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
-    }
-    updateTime();
-    setInterval(updateTime, 10000);
+    // --- 1. DATA JADWAL BULKING DARI DOCX ---
+    const weeklySchedule = {
+      1: [ // SENIN
+        { start: '07:00', end: '07:30', icon: '🍚', name: 'Sarapan Warteg', timeText: '07:00' },
+        { start: '09:40', end: '12:10', icon: '📚', name: 'Kuliah PBO', timeText: '09:40 – 12:10' },
+        { start: '12:15', end: '12:30', icon: '🥤', name: 'Evomass #1 (2 Scoop)', timeText: '12:15' },
+        { start: '13:00', end: '15:30', icon: '📚', name: 'Kuliah Grafik & Interaktif', timeText: '13:00 – 15:30' },
+        { start: '15:45', end: '16:15', icon: '🍚', name: 'Makan Siang Warteg', timeText: '15:45' },
+        { start: '17:30', end: '17:45', icon: '🥤', name: 'Evomass #2 (2 Scoop)', timeText: '17:30' },
+        { start: '19:00', end: '20:00', icon: '🏋️', name: 'GYM – Push Day', timeText: '19:00 – 20:00', gymClass: 'gym', tag: 'Push' },
+        { start: '20:10', end: '20:25', icon: '🥤', name: 'Evomass #3 (Post-Gym)', timeText: '20:10' },
+        { start: '20:30', end: '21:00', icon: '🍚', name: 'Makan Malam Warteg', timeText: '20:30' }
+      ],
+      2: [ // SELASA
+        { start: '07:00', end: '07:30', icon: '🍚', name: 'Sarapan Warteg', timeText: '07:00' },
+        { start: '09:40', end: '12:10', icon: '📚', name: 'Kuliah MBD', timeText: '09:40 – 12:10' },
+        { start: '12:15', end: '12:30', icon: '🥤', name: 'Evomass #1 (2 Scoop)', timeText: '12:15' },
+        { start: '13:00', end: '13:30', icon: '🍚', name: 'Makan Siang Warteg', timeText: '13:00' },
+        { start: '15:30', end: '15:45', icon: '🥤', name: 'Evomass #2 (2 Scoop)', timeText: '15:30' },
+        { start: '19:00', end: '20:00', icon: '🏋️', name: 'GYM – Pull Day', timeText: '19:00 – 20:00', gymClass: 'gym', tag: 'Pull' },
+        { start: '20:10', end: '20:25', icon: '🥤', name: 'Evomass #3 (Post-Gym)', timeText: '20:10' },
+        { start: '20:30', end: '21:00', icon: '🍚', name: 'Makan Malam Warteg', timeText: '20:30' }
+      ],
+      3: [ // RABU
+        { start: '07:00', end: '07:30', icon: '🍚', name: 'Sarapan Warteg', timeText: '07:00' },
+        { start: '09:40', end: '12:10', icon: '📚', name: 'Kuliah AI', timeText: '09:40 – 12:10' },
+        { start: '12:15', end: '12:30', icon: '🥤', name: 'Evomass #1 (2 Scoop)', timeText: '12:15' },
+        { start: '13:00', end: '13:30', icon: '🍚', name: 'Makan Siang Warteg', timeText: '13:00' },
+        { start: '15:30', end: '15:45', icon: '🥤', name: 'Evomass #2 (2 Scoop)', timeText: '15:30' },
+        { start: '19:00', end: '20:00', icon: '🏋️', name: 'GYM – Leg Day', timeText: '19:00 – 20:00', gymClass: 'gym', tag: 'Legs' },
+        { start: '20:10', end: '20:25', icon: '🥤', name: 'Evomass #3 (Post-Gym)', timeText: '20:10' },
+        { start: '20:30', end: '21:00', icon: '🍚', name: 'Makan Malam Warteg', timeText: '20:30' }
+      ],
+      4: [ // KAMIS (Rest)
+        { start: '07:00', end: '07:30', icon: '🍚', name: 'Sarapan Warteg', timeText: '07:00' },
+        { start: '09:00', end: '09:15', icon: '🥤', name: 'Evomass #1 (2 Scoop)', timeText: '09:00' },
+        { start: '12:00', end: '12:30', icon: '🍚', name: 'Makan Siang Warteg', timeText: '12:00' },
+        { start: '13:00', end: '13:15', icon: '🥤', name: 'Evomass #2 (2 Scoop)', timeText: '13:00' },
+        { start: '15:40', end: '18:10', icon: '📚', name: 'Kuliah KJI', timeText: '15:40 – 18:10' },
+        { start: '18:30', end: '19:00', icon: '🍚', name: 'Makan Malam Warteg', timeText: '18:30' },
+        { start: '20:00', end: '20:15', icon: '🥤', name: 'Evomass #3 (2 Scoop)', timeText: '20:00' }
+      ],
+      5: [ // JUMAT (Padat)
+        { start: '07:00', end: '07:30', icon: '🍚', name: 'Sarapan Warteg', timeText: '07:00' },
+        { start: '09:40', end: '12:10', icon: '📚', name: 'Kuliah IMK', timeText: '09:40 – 12:10' },
+        { start: '12:15', end: '12:30', icon: '🥤', name: 'Evomass #1 (2 Scoop)', timeText: '12:15' },
+        { start: '13:00', end: '15:30', icon: '📚', name: 'Kuliah Jaringan Komputer', timeText: '13:00 – 15:30' },
+        { start: '15:35', end: '15:55', icon: '🍚', name: 'Makan Siang Warteg', timeText: '15:35' },
+        { start: '15:40', end: '18:10', icon: '📚', name: 'Kuliah ASA', timeText: '15:40 – 18:10' },
+        { start: '18:15', end: '18:30', icon: '🥤', name: 'Evomass #2 (Sblm Gym)', timeText: '18:15' },
+        { start: '19:00', end: '20:00', icon: '🏋️', name: 'GYM – Upper Day', timeText: '19:00 – 20:00', gymClass: 'gym', tag: 'Upper' },
+        { start: '20:10', end: '20:25', icon: '🥤', name: 'Evomass #3 (Post-Gym)', timeText: '20:10' },
+        { start: '20:30', end: '21:00', icon: '🍚', name: 'Makan Malam Warteg', timeText: '20:30' }
+      ],
+      6: [ // SABTU
+        { start: '08:00', end: '08:30', icon: '🍚', name: 'Sarapan Warteg', timeText: '08:00' },
+        { start: '10:00', end: '10:15', icon: '🥤', name: 'Evomass #1 (2 Scoop)', timeText: '10:00' },
+        { start: '13:00', end: '13:30', icon: '🍚', name: 'Makan Siang Warteg', timeText: '13:00' },
+        { start: '15:00', end: '15:15', icon: '🥤', name: 'Evomass #2 (2 Scoop)', timeText: '15:00' },
+        { start: '19:00', end: '20:00', icon: '🏋️', name: 'GYM – Lower Day', timeText: '19:00 – 20:00', gymClass: 'gym', tag: 'Lower' },
+        { start: '20:10', end: '20:25', icon: '🥤', name: 'Evomass #3 (Post-Gym)', timeText: '20:10' },
+        { start: '20:30', end: '21:00', icon: '🍚', name: 'Makan Malam Warteg', timeText: '20:30' }
+      ],
+      0: [ // MINGGU (Rest)
+        { start: '08:00', end: '08:30', icon: '🍚', name: 'Sarapan Warteg', timeText: '08:00' },
+        { start: '10:00', end: '10:15', icon: '🥤', name: 'Evomass #1 (2 Scoop)', timeText: '10:00' },
+        { start: '13:00', end: '13:30', icon: '🍚', name: 'Makan Siang Warteg', timeText: '13:00' },
+        { start: '15:00', end: '15:15', icon: '🥤', name: 'Evomass #2 (2 Scoop)', timeText: '15:00' },
+        { start: '18:30', end: '19:00', icon: '🍚', name: 'Makan Malam Warteg', timeText: '18:30' },
+        { start: '20:00', end: '20:15', icon: '🥤', name: 'Evomass #3 (2 Scoop)', timeText: '20:00' }
+      ]
+    };
 
-    // Login Logic
+    // --- 2. RENDER JADWAL BERDASARKAN HARI ---
+    function renderTodaySchedule() {
+      const today = new Date().getDay();
+      const scheduleItems = weeklySchedule[today] || [];
+      const container = document.getElementById('liveSchedule');
+      container.innerHTML = '';
+
+      scheduleItems.forEach(item => {
+        const div = document.createElement('div');
+        div.className = `schedule-item ${item.gymClass ? item.gymClass : ''}`;
+        div.setAttribute('data-start', item.start);
+        div.setAttribute('data-end', item.end);
+
+        let innerHTML = `
+          <div class="sched-icon">${item.icon}</div>
+          <div class="sched-info">
+            <span class="sched-name">${item.name}</span>
+            <span class="sched-time">${item.timeText}</span>
+          </div>
+          <div class="sched-check">✓</div>
+          <div class="sched-dot-live"></div>
+        `;
+        
+        if (item.tag) {
+          innerHTML += `<span class="gym-tag">${item.tag}</span>`;
+        }
+        
+        div.innerHTML = innerHTML;
+        container.appendChild(div);
+      });
+    }
+
+    // --- 3. LIVE CLOCK, DATE & TRACKER (Auto-coret) ---
+    function updateClockAndTracker() {
+      const now = new Date();
+      
+      const h = now.getHours().toString().padStart(2,'0');
+      const m = now.getMinutes().toString().padStart(2,'0');
+      const s = now.getSeconds().toString().padStart(2,'0');
+      document.getElementById('liveTimeStatus').textContent = `${h}:${m}`;
+      
+      document.getElementById('liveClockDisplay').textContent = `${h}:${m}:${s}`;
+      
+      const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+      document.getElementById('currentDateDisplay').textContent = now.toLocaleDateString('id-ID', options);
+
+      const currentTimeStr = `${h}:${m}`;
+      document.querySelectorAll('#liveSchedule .schedule-item').forEach(item => {
+        const start = item.getAttribute('data-start');
+        const end = item.getAttribute('data-end');
+
+        if (start && end) {
+          if (currentTimeStr > end) {
+            item.classList.add('done');
+            item.classList.remove('active-now');
+          } else if (currentTimeStr >= start && currentTimeStr <= end) {
+            item.classList.add('active-now');
+            item.classList.remove('done');
+          } else {
+            item.classList.remove('done');
+            item.classList.remove('active-now');
+          }
+        }
+      });
+    }
+
+    // --- 4. LOGIN & INITIALIZATION ---
     function handleLogin() {
       const input = document.getElementById('userNameInput');
-      const name = input.value.trim() || "Adam"; // Default ke Adam jika kosong
+      const name = input.value.trim() || "Adam";
       const initial = name.charAt(0).toUpperCase();
 
-      // Update semua elemen nama di aplikasi
-      document.querySelectorAll('.user-display-name').forEach(el => {
-        el.textContent = name;
-      });
-      
-      // Update Initial Avatar
-      document.querySelectorAll('.user-initial').forEach(el => {
-        el.textContent = initial;
-      });
+      document.querySelectorAll('.user-display-name').forEach(el => el.textContent = name);
+      document.querySelectorAll('.user-initial').forEach(el => el.textContent = initial);
 
-      // Transisi ke Home Page
       document.getElementById('page-login').classList.remove('active');
       document.getElementById('page-home').classList.add('active');
-      
-      // Tampilkan Tab Bar & Home Indicator
       document.getElementById('mainTabBar').classList.remove('hidden');
       document.getElementById('mainHomeIndicator').classList.remove('hidden');
     }
 
-    // Page switcher
     function switchPage(pageId, btn) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       document.getElementById(pageId).classList.add('active');
       btn.classList.add('active');
+      document.querySelector('.screen-wrap').scrollTop = 0;
     }
 
-    // Timer Logic (Simplified for brevity)
-    function toggleTimer() {
-      const btn = event.target;
-      btn.textContent = btn.textContent === 'Mulai' ? 'Pause' : 'Mulai';
+    // --- 5. EXERCISE TOGGLE & REST TIMER (DARI KODE ASLI) ---
+    function toggleExercise(card) {
+      card.classList.toggle('done');
+      const check = card.querySelector('.ex-check');
+      if (card.classList.contains('done')) {
+        check.textContent = '✓';
+        check.classList.add('checked');
+      } else {
+        check.textContent = '';
+        check.classList.remove('checked');
+      }
     }
+
+    let timerVal = 90;
+    let timerInterval = null;
+    let timerRunning = false;
+    let remaining = 90;
+
+    function setTimer(val) {
+      clearInterval(timerInterval);
+      timerRunning = false;
+      timerVal = val;
+      remaining = val;
+      document.getElementById('timerDisplay').textContent = formatTime(remaining);
+      document.getElementById('startTimerBtn').textContent = 'Mulai';
+      document.querySelectorAll('.timer-btn').forEach(b => b.classList.remove('active-timer'));
+      event.target.classList.add('active-timer');
+    }
+
+    function formatTime(s) {
+      const m = Math.floor(s / 60).toString().padStart(2,'0');
+      const sec = (s % 60).toString().padStart(2,'0');
+      return m + ':' + sec;
+    }
+
+    function toggleTimer() {
+      if (timerRunning) {
+        clearInterval(timerInterval);
+        timerRunning = false;
+        document.getElementById('startTimerBtn').textContent = 'Lanjut';
+      } else {
+        if (remaining <= 0) {
+          remaining = timerVal;
+        }
+        timerRunning = true;
+        document.getElementById('startTimerBtn').textContent = 'Pause';
+        timerInterval = setInterval(() => {
+          remaining--;
+          document.getElementById('timerDisplay').textContent = formatTime(remaining);
+          if (remaining <= 0) {
+            clearInterval(timerInterval);
+            timerRunning = false;
+            document.getElementById('startTimerBtn').textContent = 'Mulai';
+            document.getElementById('timerDisplay').textContent = '00:00';
+            remaining = timerVal;
+          }
+        }, 1000);
+      }
+    }
+
+    // Start App
+    renderTodaySchedule();
+    updateClockAndTracker();
+    setInterval(updateClockAndTracker, 1000);
   </script>
 </body>
 </html>
