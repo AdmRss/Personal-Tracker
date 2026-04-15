@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ngetes WEB</title>
+  <link rel="stylesheet" href="stylenya.css" /> 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <style>
+    /* Tambahan Gaya untuk Login Page tanpa mengubah variabel yang ada */
+    .login-screen {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 30px;
+      text-align: center;
+    }
+    .login-card {
+      background: var(--card);
+      padding: 32px 24px;
+      border-radius: var(--radius-card);
+      width: 100%;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    }
+    .login-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+    .login-title {
+      font-size: 24px;
+      font-weight: 740;
+      color: var(--label);
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+    .login-subtitle {
+      font-size: 14px;
+      color: var(--label3);
+      margin-bottom: 30px;
+      line-height: 1.4;
+    }
+    .login-input {
+      width: 100%;
+      padding: 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--separator);
+      background: var(--bg);
+      color: var(--label);
+      font-family: var(--font);
+      font-size: 16px;
+      margin-bottom: 20px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .login-input:focus {
+      border-color: var(--blue);
+    }
+    .login-submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--blue);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .login-submit-btn:active {
+      opacity: 0.8;
+    }
+    
+    /* Sembunyikan navigasi saat login */
+    .tab-bar.hidden, .home-indicator.hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="scene">
+    <div class="iphone">
+      <div class="dynamic-island">
+        <div class="di-camera"></div>
+      </div>
+
+      <div class="status-bar">
+        <span class="time" id="liveTime">9:41</span>
+        <div class="status-icons">
+          <svg width="17" height="12" viewBox="0 0 17 12" fill="currentColor">
+            <rect x="0" y="3" width="3" height="9" rx="1" opacity="0.3"/>
+            <rect x="4.5" y="2" width="3" height="10" rx="1" opacity="0.5"/>
+            <rect x="9" y="0" width="3" height="12" rx="1" opacity="0.75"/>
+            <rect x="13.5" y="0" width="3" height="12" rx="1"/>
+          </svg>
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor">
+            <path d="M8 2C10.5 2 12.7 3 14.3 4.7L15.5 3.5C13.5 1.3 10.9 0 8 0S2.5 1.3.5 3.5L1.7 4.7C3.3 3 5.5 2 8 2Z" opacity="0.5"/>
+            <path d="M8 5C9.7 5 11.2 5.7 12.3 6.8L13.5 5.6C12 4.1 10.1 3.2 8 3.2S4 4.1 2.5 5.6L3.7 6.8C4.8 5.7 6.3 5 8 5Z" opacity="0.75"/>
+            <circle cx="8" cy="10" r="2"/>
+          </svg>
+          <div class="battery">
+            <div class="battery-body">
+              <div class="battery-fill" style="width:82%"></div>
+            </div>
+            <div class="battery-tip"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="screen-wrap">
+        
+        <div class="page active" id="page-login">
+          <div class="login-screen">
+            <div class="login-card">
+              <div class="login-icon">💪</div>
+              <h2 class="login-title">Selamat Datang</h2>
+              <p class="login-subtitle">Masukkan nama panggilan Anda untuk memulai pemantauan bulking.</p>
+              <input type="text" id="userNameInput" class="login-input" placeholder="Nama Anda (Contoh: Adam)" />
+              <button class="login-submit-btn" onclick="handleLogin()">Mulai Sekarang</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="page" id="page-home">
+          <div class="home-header">
+            <div class="greeting-block">
+              <p class="greeting-sub" id="currentDateDisplay">Rabu, 15 April</p>
+              <h1 class="greeting-title">Hai, <span class="user-display-name">User</span> 👋</h1>
+            </div>
+            <button class="avatar-btn" aria-label="Profile">
+              <div class="avatar user-initial">U</div>
+            </button>
+          </div>
+
+          <div class="summary-card">
+            <div class="summary-top">
+              <span class="summary-label">Program Bulking</span>
+              <span class="summary-badge">Let's Go GNG 🔥</span>
+            </div>
+            <div class="summary-stats">
+              <div class="stat-item">
+                <span class="stat-num">56.5</span>
+                <span class="stat-unit">kg</span>
+                <span class="stat-desc">Berat</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-item">
+                <span class="stat-num">2700</span>
+                <span class="stat-unit">kcal</span>
+                <span class="stat-desc">Target/hari</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-item">
+                <span class="stat-num">6</span>
+                <span class="stat-unit">scoop</span>
+                <span class="stat-desc">Evomass</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-title">Jadwal Hari Ini</div>
+          <div class="schedule-list">
+            <div class="schedule-item done">
+              <div class="sched-icon">🍚</div>
+              <div class="sched-info">
+                <span class="sched-name">Sarapan Warteg</span>
+                <span class="sched-time">07:00</span>
+              </div>
+              <div class="sched-check">✓</div>
+            </div>
+            <div class="schedule-item done">
+              <div class="sched-icon">📚</div>
+              <div class="sched-info">
+                <span class="sched-name">Kuliah PBO</span>
+                <span class="sched-time">09:40 – 12:10</span>
+              </div>
+              <div class="sched-check">✓</div>
+            </div>
+            <div class="schedule-item active-now">
+              <div class="sched-icon">🥤</div>
+              <div class="sched-info">
+                <span class="sched-name">Evomass #1</span>
+                <span class="sched-time">12:15 · Sekarang</span>
+              </div>
+              <div class="sched-dot-live"></div>
+            </div>
+            <div class="schedule-item">
+              <div class="sched-icon">📚</div>
+              <div class="sched-info">
+                <span class="sched-name">Kuliah Grafik</span>
+                <span class="sched-time">13:00 – 15:30</span>
+              </div>
+            </div>
+            <div class="schedule-item gym">
+              <div class="sched-icon">🏋️</div>
+              <div class="sched-info">
+                <span class="sched-name">GYM – Push Day</span>
+                <span class="sched-time">19:00 – 20:00</span>
+              </div>
+              <span class="gym-tag">Push</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="page" id="page-nutrition">
+          <div class="page-header">
+            <h2>Nutrisi</h2>
+            <span class="page-date">Hari ini</span>
+          </div>
+          <div class="calorie-ring-card">
+            <div class="ring-wrapper">
+              <svg viewBox="0 0 120 120" class="ring-svg">
+                <circle cx="60" cy="60" r="50" class="ring-bg"/>
+                <circle cx="60" cy="60" r="50" class="ring-fill" stroke-dasharray="314" stroke-dashoffset="94"/>
+              </svg>
+              <div class="ring-center">
+                <span class="ring-num">2100</span>
+                <span class="ring-label">kcal</span>
+              </div>
+            </div>
+            <div class="macro-row">
+              <div class="macro-item">
+                <div class="macro-bar-wrap"><div class="macro-bar protein" style="height:70%"></div></div>
+                <span class="macro-val">135g</span>
+                <span class="macro-lbl">Protein</span>
+              </div>
+              <div class="macro-item">
+                <div class="macro-bar-wrap"><div class="macro-bar carbs" style="height:55%"></div></div>
+                <span class="macro-val">280g</span>
+                <span class="macro-lbl">Karbo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page" id="page-gym">
+          <div class="page-header">
+            <h2>Program Gym</h2>
+            <span class="page-date">PPL-R-UL</span>
+          </div>
+          <div class="timer-card">
+            <div class="timer-display" id="timerDisplay">01:30</div>
+            <button class="start-timer-btn" onclick="toggleTimer()">Mulai</button>
+          </div>
+        </div>
+
+        <div class="page" id="page-profile">
+          <div class="profile-hero">
+            <div class="profile-avatar-lg user-initial">U</div>
+            <h2 class="profile-name user-display-name">User</h2>
+            <p class="profile-tag">Ectomorph · Hardgainer 🔥</p>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-box"><span class="sb-val">167 (kayaknya)</span><span class="sb-lbl">Tinggi (cm)</span></div>
+            <div class="stat-box"><span class="sb-val">56.5</span><span class="sb-lbl">Berat (kg)</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="tab-bar hidden" id="mainTabBar">
+        <button class="tab-btn active" data-page="page-home" onclick="switchPage('page-home', this)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+          <span>Beranda</span>
+        </button>
+        <button class="tab-btn" data-page="page-nutrition" onclick="switchPage('page-nutrition', this)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          <span>Nutrisi</span>
+        </button>
+        <button class="tab-btn" data-page="page-gym" onclick="switchPage('page-gym', this)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5h11M6.5 17.5h11M3 10h18M3 14h18"/></svg>
+          <span>Gym</span>
+        </button>
+        <button class="tab-btn" data-page="page-profile" onclick="switchPage('page-profile', this)">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Profil</span>
+        </button>
+      </div>
+
+      <div class="home-indicator hidden" id="mainHomeIndicator"></div>
+    </div>
+  </div>
+
+  <script>
+    // Live time logic
+    function updateTime() {
+      const now = new Date();
+      document.getElementById('liveTime').textContent = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
+    }
+    updateTime();
+    setInterval(updateTime, 10000);
+
+    // Login Logic
+    function handleLogin() {
+      const input = document.getElementById('userNameInput');
+      const name = input.value.trim() || "Adam"; // Default ke Adam jika kosong
+      const initial = name.charAt(0).toUpperCase();
+
+      // Update semua elemen nama di aplikasi
+      document.querySelectorAll('.user-display-name').forEach(el => {
+        el.textContent = name;
+      });
+      
+      // Update Initial Avatar
+      document.querySelectorAll('.user-initial').forEach(el => {
+        el.textContent = initial;
+      });
+
+      // Transisi ke Home Page
+      document.getElementById('page-login').classList.remove('active');
+      document.getElementById('page-home').classList.add('active');
+      
+      // Tampilkan Tab Bar & Home Indicator
+      document.getElementById('mainTabBar').classList.remove('hidden');
+      document.getElementById('mainHomeIndicator').classList.remove('hidden');
+    }
+
+    // Page switcher
+    function switchPage(pageId, btn) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // Timer Logic (Simplified for brevity)
+    function toggleTimer() {
+      const btn = event.target;
+      btn.textContent = btn.textContent === 'Mulai' ? 'Pause' : 'Mulai';
+    }
+  </script>
+</body>
+</html>
